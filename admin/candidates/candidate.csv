@@ -1,0 +1,11 @@
+registration_id,candidate_name,candidate_father_name,candidate_dob,candidate_gender,candidate_email,candidate_phone,subject_id,status
+2.10112E+11,K. Arul,R. Kumar,15-06-2002,M,arul.k@example.com,9876543210,,A
+2.10113E+11,B. Chandrasekhar,B. Ramesh,22-04-2001,M,chand@example.com,9876501234,,A
+2.10113E+11,B. Venkata Ramana,V. Nageswara Rao,05-12-2000,M,venkatar@example.com,9876500001,,A
+2.10113E+11,S. Anusha,S. Mahesh,18-09-2003,F,anusha.s@example.com,9876511122,,A
+2.10114E+11,M. Priya,M. Raghav,10-11-2002,F,priya.m@example.com,9876598765,,A
+2.10115E+11,R. Rahul,R. Srinivas,07-08-2001,M,rahul.r@example.com,9876534567,,A
+2.10116E+11,G. Swathi,G. Prasad,27-03-2002,F,swathi.g@example.com,9876523456,,A
+2.10117E+11,T. Naveen Kumar,T. Krishnamurthy,15-01-2000,M,naveen.k@example.com,9876547890,,A
+2.10118E+11,D. Lakshmi,D. Bhaskar,12-05-2001,F,lakshmi.d@example.com,9876581234,,A
+2.10119E+11,P. Ramesh,P. Suryanarayana,23-10-1999,M,ramesh.p@example.com,9876592345,,A
