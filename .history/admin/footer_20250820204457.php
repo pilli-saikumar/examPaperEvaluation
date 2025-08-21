@@ -14,7 +14,6 @@
 
   <script src="<?php echo BASE_URL?>assets/js/jquery.validate.js"></script>
 <script src="<?php echo BASE_URL;?>vendors/js/vendor.bundle.base.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap-multiselect@1.1.0/dist/js/bootstrap-multiselect.min.js"></script>
 <!-- endinject -->
 <!-- Plugin js for this page -->
 <script src="<?php echo BASE_URL;?>vendors/chart.js/Chart.min.js"></script>

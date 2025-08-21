@@ -28,7 +28,7 @@
     <!-- endinject -->
       <!-- Multiselect plugin CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
    
     <link rel="shortcut icon" href="<?php echo BASE_URL;?>assets/images/faces/profile.jfif" />
     

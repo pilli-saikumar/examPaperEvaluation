@@ -224,7 +224,7 @@ if(isset($_POST['saveChanges']) && $_POST['saveChanges'] == 'Submit'){
                           <div class="col-md-3 col-sm-3 col-lg-3" style="display: none;" id="invigilator">
                             <div class="form-group">
                                 <label for="invigilator_id">Invigilator</label>
-                                <select name="invigilator_id[]"  class="form-select form-control"  id="invigilator_id"  multiple="multiple">
+                                <select name="invigilator_id[]" class="form-select form-control" id="invigilator_id" multiple="multiple"></select>
                      
                                
                                
@@ -280,13 +280,14 @@ $(document).ready(function(){
       //  initMultiselect();
 
         // Form Validation
-        $('#invigilator_id').multiselect({
-          buttonWidth: '100%',
-          includeSelectAllOption: true,
-          enableFiltering: true,
-          maxHeight: 300,
-          numberDisplayed: 2
-        });
+        // $('#invigilator_id').multiselect({
+        //   buttonWidth: '100%',
+        //   includeSelectAllOption: true,
+        //   enableFiltering: true,
+        //   maxHeight: 300,
+        //   numberDisplayed: 2
+        // });
+        
         if($("#currentDataForm").length) { 
             $("#currentDataForm").validate({
                 rules: {
@@ -564,48 +565,47 @@ $(document).ready(function(){
 //         }
 //     }
 function getInvigilators() {
-    var subject_id = $('#subject_id').val();
-    var exam_id = $('#exam_id').val();
-    
-    if (subject_id && exam_id) {
-        var $select = $('#invigilator_id');
-        $select.html('<option value="">Loading invigilators...</option>');
-        
-        $.ajax({
-            url: 'get_invigilators.php',
-            type: 'POST',
-            data: { 
-                subject_id: subject_id, 
-                exam_id: exam_id 
-            },
-            dataType: 'html',
-            success: function(response) {
-                var parts = response.split('||COUNT||');
-                var optionsHtml = parts[0]; 
-                var candidateCount = parts[1]; 
-                
-                if (parts.length === 2) {
-                    $select.html(optionsHtml);
-                    // Crucial Step: Rebuild the multiselect after updating the HTML
+        var subject_id = $('#subject_id').val(); // Assuming these exist in your form
+        var exam_id = $('#exam_id').val();      // Assuming these exist in your form
+
+        if (subject_id && exam_id) {
+            var $select = $('#invigilator_id');
+            $select.html('<option value="">Loading invigilators...</option>');
+            $select.multiselect('rebuild');
+
+            $.ajax({
+                url: 'get_invigilators.php',
+                type: 'POST',
+                data: { 
+                    subject_id: subject_id, 
+                    exam_id: exam_id 
+                },
+                dataType: 'html',
+                success: function(response) {
+                    var parts = response.split('||COUNT||');
+                    var optionsHtml = parts[0]; 
+                    var candidateCount = parts[1]; 
+
+                    if (parts.length === 2) {
+                        $select.html(optionsHtml);
+                        $select.multiselect('rebuild');
+                        $('#candidateCount').html("Total Candidates: " + candidateCount);
+                    } else {
+                        $('#candidateCount').html("Total Candidates: 0");
+                    }
+                },
+                error: function() {
+                    $select.html('<option value="">Error loading invigilators</option>');
                     $select.multiselect('rebuild');
-                    $('#candidateCount').html("Total Candidates: " + candidateCount);
-                } else {
-                    $('#candidateCount').html("Total Candidates: 0");
+                    $('#candidateCount').html('Total Candidates: 0');
                 }
-            },
-            error: function() {
-                $select.html('<option value="">Error loading invigilators</option>');
-                $('#candidateCount').html('Total Candidates: 0');
-                // Also rebuild on error to clear the "Loading..." message
-                $select.multiselect('rebuild');
-            }
-        });
-    } else {
-        $('#invigilator_id').html('<option value="">Please select subject and exam first</option>');
-        $('#candidateCount').html('Total Candidates: 0');
-        $('#invigilator_id').multiselect('rebuild');
+            });
+        } else {
+            $('#invigilator_id').html('<option value="">Please select subject and exam first</option>');
+            $('#invigilator_id').multiselect('rebuild');
+            $('#candidateCount').html('Total Candidates: 0');
+        }
     }
-}
 </script>
 
  </body>

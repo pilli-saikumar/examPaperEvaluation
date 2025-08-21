@@ -3,7 +3,6 @@
     include "config.php";
     include "constants.php";
     include "helper.php";
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,27 +25,32 @@
     <link rel="stylesheet" href="<?php echo BASE_URL;?>assets/css/vertical-layout-light/style.css">
     <link rel="stylesheet" href="<?php echo BASE_URL;?>vendors/css/style.css">
     <!-- endinject -->
-      <!-- Multiselect plugin CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
-   
     <link rel="shortcut icon" href="<?php echo BASE_URL;?>assets/images/faces/profile.jfif" />
     
- 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" defer></script>
+<!-- DataTables CSS -->
+<!-- Bootstrap CSS (use same version as your layout) -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-    <style>
-        select[multiple] {
-            min-height: 150px;
-        }
-        .invigilator-list {
-            border: 1px solid #ccc;
-            height: 150px;
-            overflow-y: auto;
-            padding: 10px;
-            margin-top: 5px;
-            border-radius: 4px;
-        }
-    </style>
+<!-- Bootstrap Multiselect CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-multiselect@1.1.0/dist/css/bootstrap-multiselect.css">
+        <style>
+           .invigilator-list {
+    border: 1px solid #ccc;
+    height: 150px; /* Set a fixed height */
+    overflow-y: scroll; /* Add a scrollbar */
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 4px;
+}
+.invigilator-list label {
+    display: block; /* Each checkbox on a new line */
+    margin-bottom: 5px;
+}
+        </style>
+
+
     </head>
     <body>
     <div class="container-scroller">
@@ -77,3 +81,6 @@
             
         </div>
         </nav>
+
+
+

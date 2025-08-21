@@ -320,6 +320,7 @@ $(document).ready(function(){
         
         if (assign_candidates == 'individual') {
             $('#invigilator').show().prop('required', true);
+            $('#invigilator_id').multiselect('rebuild');
             // $('#candidate_assign_count').show().prop('required', false);
          
         } else {
@@ -586,6 +587,7 @@ function getInvigilators() {
                 
                 if (parts.length === 2) {
                     $select.html(optionsHtml);
+                    console.log(optionsHtml);
                     // Crucial Step: Rebuild the multiselect after updating the HTML
                     $select.multiselect('rebuild');
                     $('#candidateCount').html("Total Candidates: " + candidateCount);

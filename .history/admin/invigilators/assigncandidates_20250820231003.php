@@ -586,6 +586,7 @@ function getInvigilators() {
                 
                 if (parts.length === 2) {
                     $select.html(optionsHtml);
+                    
                     // Crucial Step: Rebuild the multiselect after updating the HTML
                     $select.multiselect('rebuild');
                     $('#candidateCount').html("Total Candidates: " + candidateCount);

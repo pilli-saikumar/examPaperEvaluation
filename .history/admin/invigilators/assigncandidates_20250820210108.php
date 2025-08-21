@@ -219,7 +219,7 @@ if(isset($_POST['saveChanges']) && $_POST['saveChanges'] == 'Submit'){
                         </div>
                         </div>
      
-                          
+   
                       
                           <div class="col-md-3 col-sm-3 col-lg-3" style="display: none;" id="invigilator">
                             <div class="form-group">
@@ -499,113 +499,69 @@ $(document).ready(function(){
 //             $('#candidateCount').html('Total Candidates: 0');
 //         }
 //     }
-// function getInvigilators() {
-//         var subject_id = $('#subject_id').val();
-//         var exam_id = $('#exam_id').val();
+function getInvigilators() {
+        var subject_id = $('#subject_id').val();
+        var exam_id = $('#exam_id').val();
         
-//         if (subject_id && exam_id) {
-//             var $select = $('#invigilator_id');
-//             $select.html('<option value="">Loading invigilators...</option>');
+        if (subject_id && exam_id) {
+            var $select = $('#invigilator_id');
+            $select.html('<option value="">Loading invigilators...</option>');
             
-//             $.ajax({
-//                 url: 'get_invigilators.php',
-//                 type: 'POST',
-//                 data: { 
-//                     subject_id: subject_id, 
-//                     exam_id: exam_id 
-//                 },
-//                 dataType: 'html',
-//                 success: function(response) {
-//                console.log(response);
-//                     var parts = response.split('||COUNT||');
-//                     var optionsHtml = parts[0]; // dropdown options
-//                     var candidateCount = parts[1]; // candidate count
-//                     // The split for ||COUNTCANDIDATE|| is redundant; use the first split
-//                     // var partscandidate = response.split('||COUNTCANDIDATE||');
+            $.ajax({
+                url: 'get_invigilators.php',
+                type: 'POST',
+                data: { 
+                    subject_id: subject_id, 
+                    exam_id: exam_id 
+                },
+                dataType: 'html',
+                success: function(response) {
+               
+                    var parts = response.split('||COUNT||');
+                    var optionsHtml = parts[0]; // dropdown options
+                    var candidateCount = parts[1]; // candidate count
+                    // The split for ||COUNTCANDIDATE|| is redundant; use the first split
+                    // var partscandidate = response.split('||COUNTCANDIDATE||');
                     
               
                     
-//                     if (parts.length === 2) {
-                    
-//         if ($select.hasClass('multiselect')) {
-//             $select.multiselect('destroy');
-//         }
-//         $select.html(optionsHtml);
-      
-//         // Destroy and update options
-//         $select.multiselect({
-//             buttonWidth: '100%',
-//             includeSelectAllOption: true,
-//             enableFiltering: true,
-//             maxHeight: 300,
-//             numberDisplayed: 2
-//         });
+                 //   if (parts.length === 2) {
+        // Destroy and update options
+        if ($select.hasClass('multiselect')) {
+            $select.multiselect('destroy');
+        }
+        $select.html(optionsHtml);
 
-//         // ✅ Update candidate count only here
-//         $('#candidateCount').html("Total Candidates: " + candidateCount);
-//     } else {
-//         $('#candidateCount').html("Total Candidates: 0");
-//     }
-//                 },
-//                 error: function() {
-//                     $select.html('<option value="">Error loading invigilators</option>');
-//                     $('#candidateCount').html('Total Candidates: 0');
-//                 }
-//             });
-//         } else {
-//             // It's good practice to clear the list and reset the count if inputs are invalid
-//             $('#invigilator_id').html('<option value="">Please select subject and exam first</option>');
-//             $('#candidateCount').html('Total Candidates: 0');
-//             // Destroy and re-init multiselect here to reset its state
-//             if ($('#invigilator_id').hasClass('multiselect')) {
-//                 $('#invigilator_id').multiselect('destroy');
-//             }
-//             initMultiselect();
-//         }
-//     }
-function getInvigilators() {
-    var subject_id = $('#subject_id').val();
-    var exam_id = $('#exam_id').val();
-    
-    if (subject_id && exam_id) {
-        var $select = $('#invigilator_id');
-        $select.html('<option value="">Loading invigilators...</option>');
-        
-        $.ajax({
-            url: 'get_invigilators.php',
-            type: 'POST',
-            data: { 
-                subject_id: subject_id, 
-                exam_id: exam_id 
-            },
-            dataType: 'html',
-            success: function(response) {
-                var parts = response.split('||COUNT||');
-                var optionsHtml = parts[0]; 
-                var candidateCount = parts[1]; 
-                
-                if (parts.length === 2) {
-                    $select.html(optionsHtml);
-                    // Crucial Step: Rebuild the multiselect after updating the HTML
-                    $select.multiselect('rebuild');
-                    $('#candidateCount').html("Total Candidates: " + candidateCount);
-                } else {
-                    $('#candidateCount').html("Total Candidates: 0");
-                }
-            },
-            error: function() {
-                $select.html('<option value="">Error loading invigilators</option>');
-                $('#candidateCount').html('Total Candidates: 0');
-                // Also rebuild on error to clear the "Loading..." message
-                $select.multiselect('rebuild');
-            }
+        $select.multiselect({
+            buttonWidth: '100%',
+            includeSelectAllOption: true,
+            enableFiltering: true,
+            maxHeight: 300,
+            numberDisplayed: 2
         });
+
+        // ✅ Update candidate count only here
+        $('#candidateCount').html("Total Candidates: " + candidateCount);
     } else {
-        $('#invigilator_id').html('<option value="">Please select subject and exam first</option>');
-        $('#candidateCount').html('Total Candidates: 0');
-        $('#invigilator_id').multiselect('rebuild');
+        $('#candidateCount').html("Total Candidates: 0");
     }
-}
+                },
+                error: function() {
+                    $select.html('<option value="">Error loading invigilators</option>');
+                    $('#candidateCount').html('Total Candidates: 0');
+                }
+            });
+        } else {
+            // It's good practice to clear the list and reset the count if inputs are invalid
+            $('#invigilator_id').html('<option value="">Please select subject and exam first</option>');
+            $('#candidateCount').html('Total Candidates: 0');
+            // Destroy and re-init multiselect here to reset its state
+            if ($('#invigilator_id').hasClass('multiselect')) {
+                $('#invigilator_id').multiselect('destroy');
+            }
+            initMultiselect();
+        }
+    }
 </script>
 
  </body>

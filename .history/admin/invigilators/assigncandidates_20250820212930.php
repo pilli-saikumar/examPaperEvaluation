@@ -280,13 +280,13 @@ $(document).ready(function(){
       //  initMultiselect();
 
         // Form Validation
-        $('#invigilator_id').multiselect({
-          buttonWidth: '100%',
-          includeSelectAllOption: true,
-          enableFiltering: true,
-          maxHeight: 300,
-          numberDisplayed: 2
-        });
+        // $('#invigilator_id').multiselect({
+        //   buttonWidth: '100%',
+        //   includeSelectAllOption: true,
+        //   enableFiltering: true,
+        //   maxHeight: 300,
+        //   numberDisplayed: 2
+        // });
         if($("#currentDataForm").length) { 
             $("#currentDataForm").validate({
                 rules: {
